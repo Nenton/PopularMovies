@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Popular Movies</string>
+    <string name="update_btn">Update</string>
+    <string name="error_tv">Error</string>
+    <string name="mark_as_favorite">Mark as Favorite</string>
+    <string name="trailers">Trailers:</string>
 </resources>

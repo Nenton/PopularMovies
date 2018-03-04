@@ -5,10 +5,7 @@ package com.nenton.popularmovies.ui.interfaces;
  */
 
 public interface IRootView {
-
     void showLoad();
-
     void hideLoad();
-
     void showMessage(String message);
 }

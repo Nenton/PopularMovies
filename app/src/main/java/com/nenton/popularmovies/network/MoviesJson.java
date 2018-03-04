@@ -1,8 +1,7 @@
-package com.nenton.popularmovies.utilities;
+package com.nenton.popularmovies.network;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.squareup.moshi.Json;
 
 import java.util.List;
 
@@ -13,16 +12,16 @@ import java.util.List;
 public class MoviesJson {
     @SerializedName("page")
     @Expose
-    public int page;
+    private int page;
     @SerializedName("total_results")
     @Expose
-    public int totalResults;
+    private int totalResults;
     @SerializedName("total_pages")
     @Expose
-    public int totalPages;
+    private int totalPages;
     @SerializedName("results")
     @Expose
-    public List<Result> results = null;
+    private List<Result> results = null;
 
 
     public int getPage() {
@@ -45,46 +44,46 @@ public class MoviesJson {
 
         @SerializedName("vote_count")
         @Expose
-        public int voteCount;
+        private int voteCount;
         @SerializedName("id")
         @Expose
-        public int id;
+        private int id;
         @SerializedName("video")
         @Expose
-        public boolean video;
+        private boolean video;
         @SerializedName("vote_average")
         @Expose
-        public float voteAverage;
+        private float voteAverage;
         @SerializedName("title")
         @Expose
-        public String title;
+        private String title;
         @SerializedName("popularity")
         @Expose
-        public float popularity;
+        private float popularity;
         @SerializedName("poster_path")
         @Expose
-        public String posterPath;
+        private String posterPath;
         @SerializedName("original_language")
         @Expose
-        public String originalLanguage;
+        private String originalLanguage;
         @SerializedName("original_title")
         @Expose
-        public String originalTitle;
+        private String originalTitle;
         @SerializedName("genre_ids")
         @Expose
-        public List<Integer> genreIds = null;
+        private List<Integer> genreIds = null;
         @SerializedName("backdrop_path")
         @Expose
-        public String backdropPath;
+        private String backdropPath;
         @SerializedName("adult")
         @Expose
-        public boolean adult;
+        private boolean adult;
         @SerializedName("overview")
         @Expose
-        public String overview;
+        private String overview;
         @SerializedName("release_date")
         @Expose
-        public String releaseDate;
+        private String releaseDate;
 
         public int getVoteCount() {
             return voteCount;

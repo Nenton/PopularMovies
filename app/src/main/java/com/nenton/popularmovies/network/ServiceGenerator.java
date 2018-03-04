@@ -1,4 +1,4 @@
-package com.nenton.popularmovies.utilities;
+package com.nenton.popularmovies.network;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 
@@ -7,19 +7,19 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static com.nenton.popularmovies.utilities.AppConfig.BASE_URL;
+
 public class ServiceGenerator{
     private static OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
     private static  Retrofit.Builder sBuilder =
             new Retrofit.Builder()
-            .baseUrl(NetworkUtils.BASE_URL)
+            .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create());
 
     public static <S> S createService(Class<S> serviceClass){
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
-
-//        httpClient.addInterceptor(new HeaderInterceptor());
         httpClient.addInterceptor(logging);
 
         httpClient.addNetworkInterceptor(new StethoInterceptor());

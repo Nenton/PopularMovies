@@ -1,4 +1,4 @@
-package com.nenton.popularmovies.utilities;
+package com.nenton.popularmovies.ui.views;
 
 import android.content.Context;
 import android.support.v7.widget.AppCompatImageView;
@@ -9,6 +9,8 @@ import android.util.AttributeSet;
  */
 
 public class ImageViewCustom extends AppCompatImageView {
+
+    public static final double ASPECT_RATIO = 0.69;
 
     public ImageViewCustom(Context context) {
         super(context);
@@ -25,7 +27,7 @@ public class ImageViewCustom extends AppCompatImageView {
         int mHeight;
 
         mWidth = getMeasuredWidth();
-        mHeight = (int) (mWidth / 0.69);
+        mHeight = (int) (mWidth / ASPECT_RATIO);
 
         setMeasuredDimension(mWidth, mHeight);
     }
