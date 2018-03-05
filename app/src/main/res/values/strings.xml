@@ -4,4 +4,8 @@
     <string name="error_tv">Error</string>
     <string name="mark_as_favorite">Mark as Favorite</string>
     <string name="trailers">Trailers:</string>
+    <string name="fish_text">Every Every Every Every Every Every Every Every Every Every Every Every Every Every Every</string>
+    <string name="any_error_message">Oops, something went wrong, please try again later</string>
+    <string name="network_error_message">Network unavailable, please try later</string>
+    <string name="response_code_error_message">Error with response code</string>
 </resources>

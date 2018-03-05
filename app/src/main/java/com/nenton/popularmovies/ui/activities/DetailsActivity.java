@@ -69,6 +69,8 @@ public class DetailsActivity extends AppCompatActivity {
 
         Picasso.with(this)
                 .load(BASE_IMAGE_URL + result.getPosterPath())
+                .placeholder(R.drawable.placeholder)
+                .error(R.drawable.placeholder)
                 .into(mImageView);
     }
 }

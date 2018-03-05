@@ -73,6 +73,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             Picasso.with(mContext)
                     .load(path)
                     .fit()
+                    .placeholder(R.drawable.placeholder)
+                    .error(R.drawable.placeholder)
                     .into(poster);
         }
     }

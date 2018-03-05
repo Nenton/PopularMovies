@@ -19,7 +19,6 @@ import android.widget.Toast;
 import com.nenton.popularmovies.R;
 import com.nenton.popularmovies.network.ServiceGenerator;
 import com.nenton.popularmovies.ui.interfaces.IMainView;
-import com.nenton.popularmovies.ui.interfaces.IRootView;
 import com.nenton.popularmovies.network.MoviesJson;
 import com.nenton.popularmovies.network.RestService;
 import com.nenton.popularmovies.ui.adapters.MainAdapter;
@@ -82,13 +81,15 @@ public class MainActivity extends AppCompatActivity implements IMainView {
             public void onResponse(@NonNull Call<MoviesJson> call, @NonNull Response<MoviesJson> response) {
                 if (response.code() == 200) {
                     mainAdapter.updateData(response.body());
+                    hideLoad();
+                } else {
+                    showError(getString(R.string.response_code_error_message) + response.code());
                 }
-                hideLoad();
             }
 
             @Override
             public void onFailure(@NonNull Call<MoviesJson> call, @NonNull Throwable t) {
-                hideLoad();
+                showError(t.getMessage());
             }
         };
     }
@@ -105,11 +106,11 @@ public class MainActivity extends AppCompatActivity implements IMainView {
                     break;
                 default:
                     hideLoad();
-                    showError("Oops, something went wrong, please try again later");
+                    showError(getString(R.string.any_error_message));
                     break;
             }
         } else {
-            showError("Network unavailable, please try later");
+            showError(getString(R.string.network_error_message));
         }
     }
 

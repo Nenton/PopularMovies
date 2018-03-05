@@ -17,27 +17,27 @@
         android:id="@+id/main_error_wrap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:orientation="vertical"
         android:visibility="invisible"
-        tools:visibility="visible"
-        android:layout_gravity="center">
+        tools:visibility="visible">
 
         <TextView
             android:id="@+id/main_error_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/error_tv"
             android:textAlignment="center"
             android:textColor="@color/greyText"
-            android:textSize="20sp"
-            android:text="@string/error_tv"/>
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/main_update_btn"
+            style="@style/AppTheme.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            style="@style/AppTheme.Button"
-            android:text="@string/update_btn"/>
+            android:text="@string/update_btn" />
 
     </LinearLayout>
 

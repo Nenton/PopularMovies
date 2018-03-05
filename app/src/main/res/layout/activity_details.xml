@@ -1,95 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <com.nenton.popularmovies.ui.views.ImageViewCustom
-            android:id="@+id/details_poster_iv"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="16dp"
-            tools:background="@color/greyDivider" />
+        android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/details_year_tv"
-                android:layout_width="match_parent"
+            <com.nenton.popularmovies.ui.views.ImageViewCustom
+                android:id="@+id/details_poster_iv"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textColor="@color/greyText"
-                android:textSize="24sp"
-                tools:text="2015" />
+                android:layout_weight="1"
+                android:padding="16dp"
+                tools:background="@color/greyDivider" />
 
-            <TextView
-                android:id="@+id/details_time_tv"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textColor="@color/greyText"
-                android:textSize="20sp"
-                tools:text="120 min" />
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="16dp">
 
-            <TextView
-                android:id="@+id/details_rating_tv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp"
-                android:textColor="@color/greyText"
-                android:textSize="12sp"
-                tools:text="8.3/10" />
+                <TextView
+                    android:id="@+id/details_year_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/greyText"
+                    android:textSize="24sp"
+                    tools:text="2015" />
 
-            <Button
-                android:id="@+id/details_favorite_btn"
-                style="@style/AppTheme.Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textColor="@color/greyDivider"
-                android:text="@string/mark_as_favorite" />
+                <TextView
+                    android:id="@+id/details_time_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/greyText"
+                    android:textSize="20sp"
+                    tools:text="120 min" />
+
+                <TextView
+                    android:id="@+id/details_rating_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/greyText"
+                    android:textSize="12sp"
+                    tools:text="8.3/10" />
+
+                <Button
+                    android:id="@+id/details_favorite_btn"
+                    style="@style/AppTheme.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/mark_as_favorite"
+                    android:textColor="@color/greyDivider" />
+            </LinearLayout>
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/details_descriptions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:textColor="@color/greyText"
+            tools:text="@string/fish_text" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/greyDivider" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:text="@string/trailers"
+            android:textColor="@color/greyText"
+            android:textSize="20sp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/details_trailers_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/details_descriptions"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:textColor="@color/greyText"
-        tools:text="Every Every Every Every Every Every Every Every Every Every Every Every Every Every Every " />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/greyDivider" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:textColor="@color/greyText"
-        android:textSize="20sp"
-        android:text="@string/trailers" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/details_trailers_rv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-</LinearLayout>
+</ScrollView>
