@@ -8,10 +8,13 @@ import android.view.ViewGroup;
 
 import com.google.gson.Gson;
 import com.nenton.popularmovies.R;
+import com.nenton.popularmovies.data.pojo.Movie;
 import com.nenton.popularmovies.ui.activities.MainActivity;
 import com.nenton.popularmovies.ui.views.ImageViewCustom;
-import com.nenton.popularmovies.network.MoviesJson;
+import com.nenton.popularmovies.network.res.MoviesResponseJson;
 import com.squareup.picasso.Picasso;
+
+import java.util.List;
 
 import static com.nenton.popularmovies.utilities.AppConfig.BASE_IMAGE_URL;
 
@@ -21,7 +24,7 @@ import static com.nenton.popularmovies.utilities.AppConfig.BASE_IMAGE_URL;
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
-    private MoviesJson mMoviesJson;
+    private List<Movie> mMoviesJson;
     private Context mContext;
     private MainActivity mActivity;
 
@@ -29,7 +32,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         mActivity = mainActivity;
     }
 
-    public void updateData(MoviesJson moviesJson) {
+    public void updateData(List<Movie> moviesJson) {
         this.mMoviesJson = moviesJson;
         notifyDataSetChanged();
     }
@@ -43,12 +46,12 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.bindView(BASE_IMAGE_URL + mMoviesJson.getResults().get(position).getPosterPath());
+        holder.bindView(BASE_IMAGE_URL + mMoviesJson.get(position).getPosterPath());
     }
 
     @Override
     public int getItemCount() {
-        return mMoviesJson != null ? mMoviesJson.getResults().size() : 0;
+        return mMoviesJson != null ? mMoviesJson.size() : 0;
     }
 
 
@@ -62,9 +65,9 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             poster.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    MoviesJson.Result result = mMoviesJson.getResults().get(getAdapterPosition());
+                    Movie result = mMoviesJson.get(getAdapterPosition());
                     String json = new Gson().toJson(result);
-                    mActivity.startDetailActivity(json);
+                    mActivity.startDetailActivity(result);
                 }
             });
         }

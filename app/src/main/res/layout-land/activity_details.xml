@@ -52,25 +52,24 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="@string/mark_as_favorite" />
+
+                <TextView
+                    android:id="@+id/details_descriptions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:textColor="@color/greyText"
+                    tools:text="@string/fish_text" />
             </LinearLayout>
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/details_descriptions"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:textColor="@color/greyText"
-            tools:text="@string/fish_text" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp"
             android:background="@color/greyDivider" />
 
         <TextView
@@ -84,25 +83,25 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/details_trailers_rv"
-            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:layout_marginTop="16dp"
             android:text="@string/reviews"
             android:textColor="@color/greyText"
             android:textSize="20sp" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/details_reviews_rv"
-            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" />
 
     </LinearLayout>
 

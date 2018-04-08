@@ -1,4 +1,7 @@
-package com.nenton.popularmovies.network;
+package com.nenton.popularmovies.network.res;
+
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -9,7 +12,8 @@ import java.util.List;
  * Created by serge on 03.03.2018.
  */
 
-public class MoviesJson {
+public class MoviesResponseJson{
+
     @SerializedName("page")
     @Expose
     private int page;
@@ -22,7 +26,6 @@ public class MoviesJson {
     @SerializedName("results")
     @Expose
     private List<Result> results = null;
-
 
     public int getPage() {
         return page;
@@ -40,7 +43,8 @@ public class MoviesJson {
         return results;
     }
 
-    public class Result {
+
+    public static class Result{
 
         @SerializedName("vote_count")
         @Expose
@@ -84,6 +88,22 @@ public class MoviesJson {
         @SerializedName("release_date")
         @Expose
         private String releaseDate;
+
+        protected Result(Parcel in) {
+            voteCount = in.readInt();
+            id = in.readInt();
+            video = in.readByte() != 0;
+            voteAverage = in.readFloat();
+            title = in.readString();
+            popularity = in.readFloat();
+            posterPath = in.readString();
+            originalLanguage = in.readString();
+            originalTitle = in.readString();
+            backdropPath = in.readString();
+            adult = in.readByte() != 0;
+            overview = in.readString();
+            releaseDate = in.readString();
+        }
 
         public int getVoteCount() {
             return voteCount;
@@ -140,5 +160,7 @@ public class MoviesJson {
         public String getReleaseDate() {
             return releaseDate;
         }
+
+
     }
 }
