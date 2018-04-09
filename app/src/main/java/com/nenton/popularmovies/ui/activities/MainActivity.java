@@ -65,7 +65,10 @@ public class MainActivity extends AppCompatActivity implements IMainView, Loader
 
     private static final String TAG = MainActivity.class.getSimpleName();
     private static final String QUERY_STATE_KEY = "QUERY_STATE_KEY";
+    private static final String SCROLL_POSITION_KEY = "SCROLL_POSITION_KEY";
     private static final int MOVIE_LOADER_ID = 5151;
+
+    private int scrollPosition = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,8 +79,18 @@ public class MainActivity extends AppCompatActivity implements IMainView, Loader
         showLoad();
         initRecyclerView();
         initNetworkQuery();
+        onRestoreInstanceState(savedInstanceState);
+    }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putInt(QUERY_STATE_KEY, queryState);
+        outState.putInt(SCROLL_POSITION_KEY, ((LinearLayoutManager) mMovieRV.getLayoutManager()).findFirstVisibleItemPosition());
+        super.onSaveInstanceState(outState);
+    }
 
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
         if (savedInstanceState != null) {
             queryState = savedInstanceState.getInt(QUERY_STATE_KEY, -1);
 
@@ -92,16 +105,11 @@ public class MainActivity extends AppCompatActivity implements IMainView, Loader
                     getSupportLoaderManager().initLoader(MOVIE_LOADER_ID, null, this);
                     break;
             }
+            scrollPosition = savedInstanceState.getInt(SCROLL_POSITION_KEY, 0);
         } else {
             queryState = QUERY_POPULAR;
             networkQuery(QUERY_POPULAR);
         }
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        outState.putInt(QUERY_STATE_KEY, queryState);
-        super.onSaveInstanceState(outState);
     }
 
     @OnClick(R.id.main_update_btn)
@@ -123,6 +131,7 @@ public class MainActivity extends AppCompatActivity implements IMainView, Loader
                 public void onResponse(@NonNull Call<MoviesResponseJson> call, @NonNull Response<MoviesResponseJson> response) {
                     if (response.code() == 200) {
                         mainAdapter.updateData(convertDataToList(response.body()));
+                        mMovieRV.getLayoutManager().scrollToPosition(scrollPosition);
                         hideLoad();
                     } else {
                         showError(getString(R.string.response_code_error_message) + response.code());
@@ -269,7 +278,7 @@ public class MainActivity extends AppCompatActivity implements IMainView, Loader
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        if (data.getCount() == 0){
+        if (data.getCount() == 0) {
             showError("Movies in favorites are missing");
         } else {
             mainAdapter.updateData(convertDataToList(data));
